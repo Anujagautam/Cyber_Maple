@@ -1,0 +1,23 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Include CSS files -->
+    <link rel="stylesheet" href="{% static 'dashboard/css/base.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'enemy_detection' %}">Enemy Detection</a>
+        <a href="{% url 'notifications' %}">Notifications</a>
+        <!-- Add more links as needed -->
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Include JavaScript files -->
+</body>
+</html>
