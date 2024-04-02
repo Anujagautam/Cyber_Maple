@@ -1,28 +1,120 @@
-/* static/css/base.css */
+html, body {
+   margin: 0;
+   padding: 0;
+}
 
 .sidebar {
-   width: 200px;
-   height: 100%;
-   position: fixed;
-   top: 0;
-   left: 0;
-   background-color: #f1f1f1;
-   padding-top: 20px;
+      width: 100%;
+      height: 8vh;
+      display: flex;
+      background-color: #333;
+      padding-top: 20px;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0px 0px 10px 0px;
+      font-family: sans-serif;
 }
 
-.content {
-   margin-left: 200px;
-   padding: 20px;
+.logo
+{
+   margin-left: -60px;
 }
 
+.links
+{
+   display: flex;
+   gap: 80px;
+   align-items: center;
+
+}
+
+.logout p{
+   color: white;
+}
 .sidebar a {
    padding: 10px;
    display: block;
-   color: black;
+   color: white; 
    text-decoration: none;
+   transition: background-color 0.3s; 
 }
 
+/* Hover effect for sidebar links */
 .sidebar a:hover {
-   background-color: #ddd;
+   background-color: #555; /* Darker background color on hover */
 }
+
+/* Style for the content area */
+.content {
+   margin-left: 200px; /* Same as the width of the sidebar */
+   padding: 20px;
+}
+
+/* Style for headings */
+h1, h2, h3 {
+   color: #333; /* Text color */
+}
+
+/* Style for paragraph text */
+p {
+   color: #666; /* Text color */
+}
+
+/* Style for anchor links in content */
+.content a {
+   color: #007bff; /* Link color */
+}
+
+/* Hover effect for anchor links in content */
+.content a:hover {
+   text-decoration: underline; /* Underline on hover */
+   color: #0056b3; /* Darker link color on hover */
+}
+
+.charts {
+   margin-left: 100px;
+   display: flex;
+   padding: 10px;
+   
+}
+
+.charts img {
+   max-width: 300px; 
+   height: auto;
+   padding: 10px;
+}
+
+.div1{
+display: flex;
+}
+
+.div2{
+   display: flex;
+}
+
+#barchart_values{
+   width: 500px; 
+   height: 300px;
+   padding-right: 100px;
+}
+
+#piechart_3d{
+   width: 500px; 
+   height: 300px;
+}
+
+
+#chart_div1{
+   width: 500px; 
+   height: 300px;
+   padding-right: 100px;
+}
+
+#chart_div{
+   width: 500px; 
+   height: 300px;
+}
+
+
+
 

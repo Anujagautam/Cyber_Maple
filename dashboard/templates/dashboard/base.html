@@ -11,10 +11,16 @@
 </head>
 <body>
     <div class="sidebar">
+        <div class="logo"><img src ="https://imgs.search.brave.com/Op63nSQg9Za6Z1qfRK0vFg-Zu65vials2D0SkPjZ7iw/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tYXBs/ZWNsb3VkLmNvbS5h/dS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MS8wMy9NYXBsZS1D/bG91ZC1Mb2dvLTIt/Mi5wbmc"></div>
+        <div class = "links">
         <a href="{% url 'dashboard' %}">Home</a>
         <a href="{% url 'enemy_detection' %}">Enemy Detection</a>
         <a href="{% url 'notifications' %}">Notifications</a>
-        <a href=""> CHART</a>
+        <a href="{% url 'chart' %}">Charts</a>
+        </div>
+        <div class="logout">
+            <p>Logout</p>
+        </div>
         <!-- Add more links as needed -->
     </div>
     <div class="content">
@@ -23,3 +29,5 @@
     <!-- Include JavaScript files -->
 </body>
 </html>
+
+

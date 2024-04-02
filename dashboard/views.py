@@ -11,3 +11,6 @@ def enemy_detection(request):
 
 def notifications(request):
     return render(request, 'dashboard/notifications.html')
+
+def chart(request):
+    return render(request, 'dashboard/chart.html')
