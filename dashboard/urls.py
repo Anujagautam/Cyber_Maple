@@ -1,11 +1,18 @@
 from django.urls import path
 from . import views
 
+app_name = 'dashboard'
+
+
 urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('enemy_detection/', views.enemy_detection, name='enemy_detection'),
+    path('files/', views.files, name='files'),
     path('notifications/', views.notifications, name='notifications'),
     path('chart/', views.chart, name='chart'),
-
-    # Add more URL patterns as needed
+    path('facial/', views.facial, name= 'facialdetection'),
+    path('passport/', views.passport, name='passport'),
+    path('vehicle/', views.vehicle, name='vehicle'),
+    path('license/', views.license, name = 'license'),
+    path('cdr/', views.cdr, name='cdr'),
+    path('interrogation/', views.interrogation, name='interrogation'),    
 ]

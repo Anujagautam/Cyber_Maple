@@ -70,9 +70,11 @@
 
   </head>
   <body>
+    
     <div class="container">
       <h1 class="form-title">Registration</h1>
-      <form action="#">
+      <form method="post">
+        {% csrf_token %}
         <div class="main-user-info">
           <div class="user-input-box">
             <label for="fullName">Full Name</label>

@@ -1,16 +1,39 @@
 
 # views.py
-from django.shortcuts import render
-
-
+from django.shortcuts import render ,redirect
+from django.http import HttpResponse  # Import HttpResponse
+from login.views import login_page
 def dashboard(request):
+
     return render(request, 'dashboard/dashboard.html')
 
-def enemy_detection(request):
-    return render(request, 'dashboard/enemy_detection.html')
+
+def files(request):
+    return render(request, 'dashboard/files.html')
 
 def notifications(request):
     return render(request, 'dashboard/notifications.html')
 
 def chart(request):
     return render(request, 'dashboard/chart.html')
+
+def facial(request):
+    return render(request, 'dashboard/facialdetection.html')
+
+def passport(request):
+    return render(request, 'dashboard/passport.html')
+
+def vehicle(request):
+    return render(request, 'dashboard/vehicle.html')
+
+def license(request):
+    return render(request, 'dashboard/license.html')
+
+def cdr(request):
+    return render(request, 'dashboard/cdr.html')
+
+def interrogation(request):
+    return render(request, 'dashboard/interrogation.html')
+
+
+
