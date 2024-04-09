@@ -35,7 +35,7 @@
      </form>
     </div>
     <div class="row">
-     {% for x in img %}
+     <!-- {% for x in img %}
       <div class="col-sm-4">
        <div class="card m-2">
         <img src="{{x.photo.url}}" alt="" class="card-img-top" height="200px">
@@ -44,7 +44,19 @@
         </div>
        </div>
       </div>
-     {% endfor %}
+     {% endfor %} -->
+     <div class="col-sm-4">
+      
+        {% if last_image %}
+        <img src="{{ last_image.photo.url }}" alt="" class="card-img-top" height="200px">
+        <div class="card-footer">
+            <small class="text-muted">{{ last_image.date }}</small>
+        </div>
+        {% endif %}
+
+     </div>
+     
+
     </div>
    </div>
 
