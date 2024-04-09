@@ -40,7 +40,18 @@
                     <i class="fas fa-caret-down"></i>
                 </a>
                 <ul>
-                    <li><a href="#">Face Detection</a></li>
+                    <li>
+                        <a href="#"
+                          >Face Detection
+                          <i class="fas fa-caret-right"></i>
+                        </a>
+                        <ul>
+                          <li><a href="{% url 'FaceDetection:facedetection' %}">Image Detect</a></li>
+                          <li>
+                            <a href="{% url 'FaceDetection:video' %}">Video Detect</a>
+                          </li>
+                        </ul>
+                      </li>
                     <li>
                         <a href="#">Document Detection
                             <i class="fas fa-caret-right"></i>

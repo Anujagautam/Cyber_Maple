@@ -1,35 +1,83 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background-color: white;
 }
 
+.container {
+  margin: auto;
+  width: 20%;
+  height: auto;
+  padding: 20px;
+}
 
-.ta {
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    margin-top: 15px;
+.face {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  margin-top: 15px;
 }
 
 .eyebar i {
-    color: white;
-    font-size: 25px;
-    text-align: center;
+  color: white;
+  font-size: 100px;
+  text-align: center;
 }
 
 .eyebar {
-    display: flex;
-    width: 100%;
-    background-color: #333;
-    font-family: sans-serif;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  width: 100%;
+  background-color: #333;
+  font-family: sans-serif;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-#Dabba p{
-    font-size: 25px;
-    font-weight: 600;
+#Dabba p {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+.mb-3 {
+  margin: 20px;
+  height: 30px;
+  width: 150px;
+  color: #333;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+#image {
+  height: 300px;
+  width: 400px;
+  margin-top: 50px;
+  margin-left: 10%;
+  border: 2px solid black;
+}
+
+.all {
+  margin-left: 400px;
+  margin-top: 50px;
+  width: 20%;
+  height: auto;
+  padding: 20px;
 }

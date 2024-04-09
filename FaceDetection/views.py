@@ -146,4 +146,4 @@ def video_show(request):
         cap.release()
         cv2.destroyAllWindows()
 
-    return render(request , "FaceDetection/FaceDetection_second.html" )
+    return render(request , "FaceDetection/video.html" )
