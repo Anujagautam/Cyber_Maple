@@ -15,8 +15,8 @@ def notifications(request):
 def chart(request):
     return render(request, 'dashboard/chart.html')
 
-def facial(request):
-    return render(request, 'dashboard/facialdetection.html')
+# def facial(request):
+#     return render(request, 'dashboard/facialdetection.html')
 
 def passport(request):
     return render(request, 'dashboard/passport.html')

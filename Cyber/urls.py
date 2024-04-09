@@ -28,7 +28,8 @@ urlpatterns = [
     path('reg/' ,include('register.urls')),
     path('logo/' , include('logout.urls')),
     path('dash/', include('dashboard.urls')),
-    path("" , views.show , name='show'),
+    path("face/" , include("FaceDetection.urls")),
+    
 
 
     
