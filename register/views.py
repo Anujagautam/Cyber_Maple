@@ -25,4 +25,3 @@ def regi(request):
 
     return render(request , 'register/register_first.html')
 
-
