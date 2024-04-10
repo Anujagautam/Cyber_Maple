@@ -27,7 +27,7 @@ def login_page(request):
             print("register Page Data",register_username_data, register_pasword_data)
             if (str(register_username_data)==str(full_name) ) and (str(password)==str(register_pasword_data)):
                 print("Now Call I am ")
-                return redirect('dashboard:chart')
+                return redirect('dashboard:dashboard')
                 
 
                

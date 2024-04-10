@@ -1,13 +1,20 @@
 <!-- templates/dashboard.html -->
-{% extends 'dashboard/base.html' %}
-{% load static %}
-{% block content %}
-
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
 <!-- Add dashboard content here -->
-
 <div class="image">
-    <h1>Dashboard</h1>
-
+  <div class="buttons">
+    <div class="recognition link-btn">
+        <i class="bi bi-person-bounding-box"></i>
+      <a href="#" class="button">Recognition</a>
+    </div>
+    <div class="trust link-btn">
+        <i class="bi bi-shield-check"></i>
+      <a href="#" class="button">Trust Guard</a>
+    </div>
+    <div class="eye link-btn">
+        <i class="bi bi-eye"></i>
+      <a href="#" class="button">Eye Scanner</a>
+    </div>
+  </div>
 </div>
-
 {% endblock %}

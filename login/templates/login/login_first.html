@@ -8,12 +8,21 @@
   <title>Login Form</title>
   <link rel="stylesheet" href="{% static 'login/css/login_first_css.css' %}" />
   <link rel="stylesheet" href="{% static 'login/css/login_second_css.css' %}"/>
+  <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'login/images/favicon.png' %}"
+    />
 
 </head>
 <body>
   <form method="post" class="mb-2">
     {% csrf_token %}
     <div class="wrapper">
+      <div class="logo1" id = "logos">
+        <img src="{% static 'login/images/logo2.png' %}"  alt="Logo" />
+      </div>
+
       <form action="">
         <h1>Login</h1>
         <div class="input-box">

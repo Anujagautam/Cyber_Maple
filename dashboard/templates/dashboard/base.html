@@ -2,83 +2,108 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-
-    
-
-    <link rel="stylesheet" href="{% static 'dashboard/css/base.css' %}">
-    
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
-
-<body>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'dashboard/images/favicon.png' %}"
+    />
+    <link rel="stylesheet" href="{% static 'dashboard/css/base.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="navbar">
     <nav>
-        <label class="logo">
-            <img
-                src="https://imgs.search.brave.com/Op63nSQg9Za6Z1qfRK0vFg-Zu65vials2D0SkPjZ7iw/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tYXBs/ZWNsb3VkLmNvbS5h/dS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MS8wMy9NYXBsZS1D/bG91ZC1Mb2dvLTIt/Mi5wbmc">
-        </label>
+      <label class="logo" id="img_logo">
+        <img src="{% static 'dashboard/images/logo2.png' %}" alt="Logo" />
+      </label>
+      <div class="icon">
         <ul>
-            <li><a class="active" href="{% url 'dashboard' %}">Home</a></li>
-            <li>
-                <a href="{% url 'files' %}">Files
-                    <i class="fas fa-caret-down"></i>
+          <li><a class="active" href="{% url 'dashboard:dashboard' %}">Home</a></li>
+          <li>
+            <a href="{% url 'dashboard:files' %}"
+              >Files
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <ul>
+              <li><a href="#">Python</a></li>
+              <li><a href="#">JQuery</a></li>
+              <li><a href="#">Javascript</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"
+              >Detection
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <ul>
+              <li>
+                <a href="#"
+                  >Face Detection
+                  <i class="fas fa-caret-right"></i>
                 </a>
                 <ul>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">JQuery</a></li>
-                    <li><a href="#">Javascript</a></li>
+                  <li>
+                    <a href="{% url 'FaceDetection:facedetection' %}"
+                      >Image Detect</a
+                    >
+                  </li>
+                  <li>
+                    <a href="{% url 'FaceDetection:video' %}">Video Detect</a>
+                  </li>
                 </ul>
-            </li>
-            <li>
-                <a href="#">Detection
-                    <i class="fas fa-caret-down"></i>
+              </li>
+              <li>
+                <a href="#"
+                  >Document Detection
+                  <i class="fas fa-caret-right"></i>
                 </a>
                 <ul>
-                    <li>
-                        <a href="#"
-                          >Face Detection
-                          <i class="fas fa-caret-right"></i>
-                        </a>
-                        <ul>
-                          <li><a href="{% url 'FaceDetection:facedetection' %}">Image Detect</a></li>
-                          <li>
-                            <a href="{% url 'FaceDetection:video' %}">Video Detect</a>
-                          </li>
-                        </ul>
-                      </li>
-                    <li>
-                        <a href="#">Document Detection
-                            <i class="fas fa-caret-right"></i>
-                        </a>
-                        
-                        <ul>
-                            <li><a href="{% url 'passport' %}">Passport Data</a></li>
-                            <li><a href="{% url 'vehicle' %}">Vehicle Registration Data</a></li>
-                            <li><a href="{% url 'license' %}">License Card Holder Data</a></li>
-                            <li><a href="{% url 'cdr' %}">CDR's</a></li>
-                            <li><a href="{%url 'interrogation' %}">Interrogation Reports</a></li>
-                            <li><a href="#">Intelligence Inputs</a></li>
-                            <li><a href="#">FIR's</a></li>
-                            <li><a href="#">Travel Related Info</a></li>
-                            <li><a href="#">Crime Related Info</a></li>
-                            <li><a href="#">Others</a></li>
-                        </ul>
-                    </li>
+                  <li><a href="{% url 'dashboard:passport' %}">Passport Data</a></li>
+                  <li>
+                    <a href="{% url 'dashboard:vehicle' %}">Vehicle Registration Data</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'dashboard:license' %}">License Card Holder Data</a>
+                  </li>
+                  <li><a href="{% url 'dashboard:cdr' %}">CDR's</a></li>
+                  <li>
+                    <a href="{%url 'dashboard:interrogation' %}">Interrogation Reports</a>
+                  </li>
+                  <li><a href="#">Intelligence Inputs</a></li>
+                  <li><a href="#">FIR's</a></li>
+                  <li><a href="#">Travel Related Info</a></li>
+                  <li><a href="#">Crime Related Info</a></li>
+                  <li><a href="#">Others</a></li>
                 </ul>
-            </li>
-            <li><a href="{% url 'chart' %}">Charts</a></li>
-            <li><a href="{% url 'notifications' %}">Notifications</a></li>
-
+              </li>
+            </ul>
+          </li>
+          <li><a href="{% url 'dashboard:chart' %}">Charts</a></li>
+          <li><a href="{% url 'dashboard:notifications' %}">Notifications</a></li>
+          <li><a href="{% url 'login:login_page' %}">Logout</a></li>
         </ul>
+      </div>
     </nav>
-    <div class="content">
-        {% block content %}{% endblock %}
-    </div>
-</body>
+  </div>
+    <div class="content">{% block content %}
+      {% endblock %}</div>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
