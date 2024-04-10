@@ -2,25 +2,29 @@
 {% load static %}
 {% block content %}
 
-<!-- Add notifications content here -->
 
 <link rel="stylesheet" href="{% static 'FaceDetection/css/style.css' %}">
 
-<form action="#" , method="post">
-  {% csrf_token %}
-  <div class = "all">
-    <h1>Video Detect</h1>
-  
-    <h3>You are detecting a person through video</h3>
-  
-    <div class="submit">
-      <input type="submit" value="Click Here!" />
-    </div>
+  <div class="videoDetect-page">
+    <form action="/face/video/" , method="post">
+      {% csrf_token %}
+      <div class = "all">
+        <h1>Video Detect</h1>
+      
+        <p>You are detecting a person through video</p>
+      
+        <button type="submit">Click here!</button>
+        
+    <p>If You Stop The Video Throw Detection Presh Key one 1</p>
+    
+      </div>    
+    </form>
   </div>
-
-
-</form>
 
 
 
 {% endblock %}
+
+
+
+

@@ -14,7 +14,6 @@ path = "new_att"
 
 images = []
 classname = []
-print(" Cal Now")
 mylist = os.listdir(path)
 
 
@@ -50,9 +49,16 @@ encodelistknown = findEncoding(images)
 print(len(encodelistknown))
 
 
+# CSV Work Flow 
+import pandas as pd
+df = pd.read_csv("database_info/Cyber_Crime_DataSet.csv"  , encoding='unicode_escape')
+label = ['Aamir Khan', 'Abhay Deol', 'Abhishek Bachchan', 'Ajay Devgn', 'Ameesha_Patel', 'Arshad_Warsi', 'Mahendra Singh Pansingh Dhoni', 'Mrunal_Thakur', 'Narendra Damodardas Modi']
+label[0]
+series = list(df['Name'])
 
 
 
+import matplotlib.pyplot as plt
 # ------------------------------------------------------------
 def show(request):
     if request.method == "POST":
@@ -66,16 +72,75 @@ def show(request):
 
     last_image = Image.objects.last()
 
+    image_name = last_image.photo.name.split('/')[-1] if last_image else None
 
-    
-
+    up_last_img  = str('media/myimage/'+image_name)
+    # print("last Image show " , up_last_img)
     form = ImageForm()
 
 
     
+    img = cv2.imread(up_last_img)
+    # print(img)
+    imgs = cv2.resize(img , (0 , 0 ) , None , 0.25 ,0.25)
+    imgs = cv2.cvtColor(img , cv2.COLOR_RGB2BGR)
+    # print(imgs)
 
-    
-    return render (request , "FaceDetection/FaceDetection_first.html" , {'last_image':last_image , 'form':form})
+    # Model Work Flow
+    final_name = ""
+    facescurframe = face_recognition.face_locations(imgs)
+    encodescurframe = face_recognition.face_encodings(imgs , facescurframe)
+    for encodeface , faceloc in zip(encodescurframe , facescurframe):
+                matches = face_recognition.compare_faces(encodelistknown , encodeface)
+
+                facedis = face_recognition.face_distance(encodelistknown , encodeface)
+
+                print(facedis)
+
+                matchindex = np.argmin(facedis)
+
+                if matches[matchindex]:
+                    final_name = classname[matchindex].upper()
+                    print(final_name)
+
+    #My Data Base inside 
+    name = list(os.listdir("database_images"))
+    list_name = list(name)
+
+    for i in range(len(list_name)):
+        list_name[i] = list_name[i][:4]
+    print(list_name)
+
+    # CSV File Code
+    fir , sec ,thi ,fou , fiv,six ,sev , eig , nine ,ten = "" , "" , "" , "" , "" , "" , "" , "" , "" ,""
+    for i in range(len(series)):
+        actual_name = series[i]
+        actual_name = actual_name[:4]
+        if str(actual_name).lower() == str(final_name[:4]).lower():
+            all = list(df.iloc[i])
+            fir = all[0]
+            sec = all[1]
+            thi = all[2]
+            fou = all[3]
+            fiv = all[4]
+            six = all[5]
+            sev = all[6]
+            eig = all[7]
+            nine = all[8]
+            ten = str(all[9])
+            print("Final" , ten)
+            break
+            
+
+    ten  = 'FaceDetection/images/Aamir Khan.jpg'
+    img = cv2.imread(ten)
+    print("Hello" , img)
+    ten  = 'FaceDetection/images/Aamir Khan.jpg'
+
+
+
+
+    return render (request , "FaceDetection/FaceDetection_first.html" , {'last_image':last_image , 'form':form  , 'final_name':final_name , 'fir':fir , 'sec':sec , 'thi':thi ,'fou':fou ,'fiv':fiv , 'six':six , 'sev':sev , 'eig':eig , 'nine':nine ,'ten':ten})
     # return render(request, 'FaceDetection/FaceDetection_first.html')
 
     
@@ -147,3 +212,7 @@ def video_show(request):
         cv2.destroyAllWindows()
 
     return render(request , "FaceDetection/video.html" )
+
+
+
+

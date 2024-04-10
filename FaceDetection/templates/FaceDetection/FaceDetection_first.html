@@ -1,50 +1,46 @@
 
-
-
+<!-- Anuja Code -->
 
 {% extends 'dashboard/base.html' %}
+{% load static %}
 {% block content %}
-
-  
+<link rel="stylesheet" href="{% static 'FaceDetection/css/style.css' %}">
 <div class="eyebar">
-  <i class="bi bi-eye-fill"></i>
-  <p class = "ta">Face Detection</p>
+  <p class="face">Face Detection</p>
 </div>
-
 <div class="container">
-    <div class="py-5 text-center text-dark "id="Dabba">
+   <div class="py-5 text-center text-dark " id="Dabba">
     <p class="mb-3">Upload Image</p>
     <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{form}}
       <input type="submit" class="btn btn-success" value="Upload">
     </form>
-</div>
-    <div class="row">
-
-            <div class="col-sm-4">
-              
-                {% if last_image %}
-                <img src="{{ last_image.photo.url }}" alt="" class="card-img-top" height="200px">
-                <div class="card-footer">
-                    <small class="text-muted">{{ last_image.date }}</small>
-                </div>
-                {% endif %}
-
-            </div>
-    
-
-    </div>
-</div>
-<!-- 
-<form action="#" method="post">
-  {% csrf_token %}
-  <div class="form-submit-btn">
-    <input type="submit" value="New Vide Throw Detect " >
   </div>
-</form> -->
+  <div class="row">
+    <div class="col-sm-4">
+      {% if last_image %}
+      <img src="{{ last_image.photo.url }}" alt="" class="card-img-top" id = "image" >
+      <div class="card-footer">
+        <small class="text-muted">{{ last_image.date }}</small>
+      </div>
+      {% endif %}
+    </div>
+
+      <!-- Backend Code  -->
+      <h4>Name     :{{fir}}</h4>
+      <h4>Nicknames     :{{sec}}</h4>
+      <h4>Born     :{{thi}}</h4>
+      <h4>Height     :{{fou}}</h4>
+      <h4>Wife /Husband     :{{fiv}}</h4>
+      <h4>Home     :{{six}}</h4>
+      <h4>Mother_name     :{{sev}}</h4>
+      <h4>Father_name     :{{eig}}</h4>
+      <h4>Profession     :{{nine}}</h4>
 
 
+  </div>
+</div>
 {% endblock %}
-<!-- Add notifications content here -->
+
 
