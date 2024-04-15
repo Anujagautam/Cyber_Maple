@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming</title>
+</head>
+<body>
+
+<script>
+    // Function to close the webcam stream when any key is pressed
+    document.addEventListener('keydown', function(event) {
+        // Make an AJAX request to stop the camera streaming
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/face/stop_streaming/', true);
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');  // Add CSRF token
+        xhr.send();
+        
+        // Close the current window
+        window.close();
+    });
+</script>
+
+</body>
+</html>

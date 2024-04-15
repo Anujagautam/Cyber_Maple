@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'FaceDetection/css/style.css' %}">
 
   <div class="videoDetect-page">
-    <form action="/face/video/" , method="post">
+    <form action="/face/videoshow/" , method="post">
       {% csrf_token %}
       <div class = "all">
         <h1>Video Detect</h1>
@@ -24,7 +24,6 @@
 
 
 {% endblock %}
-
 
 
 

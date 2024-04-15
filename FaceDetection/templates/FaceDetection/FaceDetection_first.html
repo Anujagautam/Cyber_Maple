@@ -1,6 +1,3 @@
-
-<!-- Anuja Code -->
-
 {% extends 'dashboard/base.html' %}
 {% load static %}
 {% block content %}
@@ -9,12 +6,12 @@
   <p class="face">Face Detection</p>
 </div>
 <div class="container">
-   <div class="py-5 text-center text-dark " id="Dabba">
+   <div class="upload-image py-5 text-center text-dark " id="Dabba">
     <p class="mb-3">Upload Image</p>
     <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{form}}
-      <input type="submit" class="btn btn-success" value="Upload">
+      <input type="submit" id="submit" class="btn btn-success" value="Upload">
     </form>
   </div>
   <div class="row">
@@ -24,23 +21,24 @@
       <div class="card-footer">
         <small class="text-muted">{{ last_image.date }}</small>
       </div>
+      {% endif %} 
+    </div>
+    <div class="image-data">
+      <p>User Detail</p>
+      <!-- Backend Code -->
+      {% if final_name %}
+      <h4> <span>Name </span>    :{{fir}}</h4>
+      <h4><span>Nicknames</span>     :{{sec}}</h4>
+      <h4><span>Born</span>     :{{thi}}</h4>
+      <h4><span>Height</span>     :{{fou}}</h4>
+      <h4><span>Wife /Husband</span>     :{{fiv}}</h4>
+      <h4><span>Home</span>     :{{six}}</h4>
+      <h4><span>Mother_name</span>     :{{sev}}</h4>
+      <h4><span>Father_name</span>     :{{eig}}</h4>
+      <h4><span>Profession</span>     :{{nine}}</h4>
+      <img src="{{ ten }}" alt="">
       {% endif %}
     </div>
-
-      <!-- Backend Code  -->
-      <h4>Name     :{{fir}}</h4>
-      <h4>Nicknames     :{{sec}}</h4>
-      <h4>Born     :{{thi}}</h4>
-      <h4>Height     :{{fou}}</h4>
-      <h4>Wife /Husband     :{{fiv}}</h4>
-      <h4>Home     :{{six}}</h4>
-      <h4>Mother_name     :{{sev}}</h4>
-      <h4>Father_name     :{{eig}}</h4>
-      <h4>Profession     :{{nine}}</h4>
-
-
   </div>
 </div>
 {% endblock %}
-
-

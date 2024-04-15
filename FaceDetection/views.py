@@ -61,89 +61,133 @@ series = list(df['Name'])
 import matplotlib.pyplot as plt
 # ------------------------------------------------------------
 def show(request):
+    last_image = None
+    final_name = ""
+    fir, sec, thi, fou, fiv, six, sev, eig, nine, ten = "", "", "", "", "", "", "", "", "", ""
+    
     if request.method == "POST":
-        form = ImageForm(request.POST , request.FILES)
+        form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            # return redirect('show')
-        
-    form = ImageForm()
-    img = Image.objects.all()
-
-    last_image = Image.objects.last()
-
-    image_name = last_image.photo.name.split('/')[-1] if last_image else None
-
-    up_last_img  = str('media/myimage/'+image_name)
-    # print("last Image show " , up_last_img)
-    form = ImageForm()
-
-
-    
-    img = cv2.imread(up_last_img)
-    # print(img)
-    imgs = cv2.resize(img , (0 , 0 ) , None , 0.25 ,0.25)
-    imgs = cv2.cvtColor(img , cv2.COLOR_RGB2BGR)
-    # print(imgs)
-
-    # Model Work Flow
-    final_name = ""
-    facescurframe = face_recognition.face_locations(imgs)
-    encodescurframe = face_recognition.face_encodings(imgs , facescurframe)
-    for encodeface , faceloc in zip(encodescurframe , facescurframe):
-                matches = face_recognition.compare_faces(encodelistknown , encodeface)
-
-                facedis = face_recognition.face_distance(encodelistknown , encodeface)
-
-                print(facedis)
-
-                matchindex = np.argmin(facedis)
-
-                if matches[matchindex]:
-                    final_name = classname[matchindex].upper()
-                    print(final_name)
-
-    #My Data Base inside 
-    name = list(os.listdir("database_images"))
-    list_name = list(name)
-
-    for i in range(len(list_name)):
-        list_name[i] = list_name[i][:4]
-    print(list_name)
-
-    # CSV File Code
-    fir , sec ,thi ,fou , fiv,six ,sev , eig , nine ,ten = "" , "" , "" , "" , "" , "" , "" , "" , "" ,""
-    for i in range(len(series)):
-        actual_name = series[i]
-        actual_name = actual_name[:4]
-        if str(actual_name).lower() == str(final_name[:4]).lower():
-            all = list(df.iloc[i])
-            fir = all[0]
-            sec = all[1]
-            thi = all[2]
-            fou = all[3]
-            fiv = all[4]
-            six = all[5]
-            sev = all[6]
-            eig = all[7]
-            nine = all[8]
-            ten = str(all[9])
-            print("Final" , ten)
-            break
             
-
-    ten  = 'FaceDetection/images/Aamir Khan.jpg'
-    img = cv2.imread(ten)
-    print("Hello" , img)
-    ten  = 'FaceDetection/images/Aamir Khan.jpg'
-
-
-
-
-    return render (request , "FaceDetection/FaceDetection_first.html" , {'last_image':last_image , 'form':form  , 'final_name':final_name , 'fir':fir , 'sec':sec , 'thi':thi ,'fou':fou ,'fiv':fiv , 'six':six , 'sev':sev , 'eig':eig , 'nine':nine ,'ten':ten})
-    # return render(request, 'FaceDetection/FaceDetection_first.html')
-
+            last_image = Image.objects.last()
+            if last_image:
+                image_name = last_image.photo.name.split('/')[-1]
+                up_last_img = f'media/myimage/{image_name}'
+                img = cv2.imread(up_last_img)
+                imgs = cv2.resize(img, (0, 0), None, 0.25, 0.25)
+                imgs = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+                facescurframe = face_recognition.face_locations(imgs)
+                encodescurframe = face_recognition.face_encodings(imgs, facescurframe)
+                for encodeface, faceloc in zip(encodescurframe, facescurframe):
+                    matches = face_recognition.compare_faces(encodelistknown, encodeface)
+                    facedis = face_recognition.face_distance(encodelistknown, encodeface)
+                    matchindex = np.argmin(facedis)
+                    if matches[matchindex]:
+                        final_name = classname[matchindex].upper()
+                        break
+            
+            # Fetch data from CSV file based on the detected name
+            if final_name:
+                actual_name = final_name[:4]
+                for i in range(len(series)):
+                    if str(series[i]).lower()[:4] == str(actual_name).lower():
+                        all_data = list(df.iloc[i])
+                        fir, sec, thi, fou, fiv, six, sev, eig, nine, ten = all_data
+                        ten = f'FaceDetection/images/{ten}'
+                        break
+        
+    else:
+        # Reset variables when the page is loaded via GET request
+        form = ImageForm()
+        last_image = None
+        final_name = ""
+        fir, sec, thi, fou, fiv, six, sev, eig, nine, ten = "", "", "", "", "", "", "", "", "", ""
     
+    return render(request, "FaceDetection/FaceDetection_first.html", {'last_image': last_image, 'form': form,
+                                                                    'final_name': final_name, 'fir': fir,
+                                                                    'sec': sec, 'thi': thi, 'fou': fou, 'fiv': fiv,
+                                                                    'six': six, 'sev': sev, 'eig': eig, 'nine': nine,
+                                                                    'ten': ten})
+
+
+
+
+
+# def video_show(request):
+#     return render(request, "FaceDetection/video.html")
+    
+# from django.http import HttpResponse, JsonResponse
+# from django.shortcuts import render
+# from .models import *
+# from django.core.mail import EmailMessage
+# from django.views.decorators import gzip
+# from django.http import StreamingHttpResponse
+# import cv2
+# import threading
+
+# # VideoCamera class to capture video
+# class VideoCamera(object):
+#     def __init__(self):
+#         self.video = cv2.VideoCapture(0)
+#         (self.grabbed, self.frame) = self.video.read()
+#         self.streaming = True  # Flag to control streaming
+#         threading.Thread(target=self.update, args=()).start()
+
+#     def __del__(self):
+#         self.video.release()
+
+#     def get_frame(self):
+#         image = self.frame
+#         cv2.putText(image, "sachin", (50+6, 50-6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255,), 2)
+#         _, jpeg = cv2.imencode('.jpg', image)
+#         return jpeg.tobytes()
+
+#     def update(self):
+#         while self.streaming:
+#             (self.grabbed, self.frame) = self.video.read()
+
+# # Function to generate video frames
+# def gen(camera):
+#     while camera.streaming:
+#         frame = camera.get_frame()
+#         yield (b'--frame\r\n'
+#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+# # View function to render the video page and start video detection
+# def show_video(request):
+#     return render(request, 'FaceDetection/video.html')
+
+# # Decorated view function for video streaming with gzip compression
+# @gzip.gzip_page
+# def videoshow(request):
+#     try:
+#         cam = VideoCamera()
+#         response = StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
+#         # Set a flag to close the video streaming when the connection is closed
+#         response.streaming = True
+#         return response
+#     except Exception as e:
+#         print(e)  # Log any exceptions
+#         pass
+#     finally:
+#         cam.streaming = False  # Stop the camera streaming
+#         cam.__del__()  # Release the camera resources
+#         return HttpResponse("Camera stopped. Thank you for using the webcam!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------------------------------------------
 def video_show(request):
     if request.method == "POST":
 
@@ -194,6 +238,9 @@ def video_show(request):
             # Display the frame
             cv2.imshow("WebCam Image", img)
 
+
+            
+
             # Wait for a key press for 1 millisecond
             key = cv2.waitKey(1)
 
@@ -212,7 +259,5 @@ def video_show(request):
         cv2.destroyAllWindows()
 
     return render(request , "FaceDetection/video.html" )
-
-
 
 

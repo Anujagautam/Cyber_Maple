@@ -8,5 +8,9 @@ app_name = 'FaceDetection'
 urlpatterns = [
     path("facedetection/" , views.show , name='facedetection'),
     path("FaceDetectionVedio/" , views.video_show , name='FaceDetectionVedio'),
-    path("video/" , views.video_show , name = 'video'),
+    # Another Tab Inside Show the Video
+    path("videoshow/" , views.video_show , name = 'videoshow'),
+
+
+
 ]

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 html,
 body {
   font-family: sans-serif;
@@ -8,9 +10,12 @@ body {
 
 .container {
   margin: auto;
-  width: 20%;
+  width: 100%;
   height: auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .face {
@@ -19,7 +24,36 @@ body {
   color: white;
   margin-top: 15px;
 }
+.row{
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: center;
+  gap: 50px;
+}
+.col-sm-4{
+  width: 40%;
+}
 
+
+.image-data{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.image-data p{
+  font-size: 18px;
+  color: rgb(118, 178, 202);
+}
+.image-data h4 span{
+    font-weight: 600;
+
+}
+.image-data h4{
+  font-weight: 400;
+  font-family: Noto Sans;
+}
 .eyebar i {
   color: white;
   font-size: 100px;
@@ -64,7 +98,9 @@ h3 {
   width: 400px;
   margin-top: 50px;
   margin-left: 10%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  border-radius: 15px;
+  box-shadow: 4px 8px 10px 8px rgb(230, 230, 230);
 }
 
 
@@ -103,4 +139,17 @@ h3 {
   border-radius: 40px;
   margin: 10px 0;
   
+}
+
+.upload-image form{
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+ gap: 10px;
+}
+
+.upload-image form #submit{
+  border-radius: 40px;
+  margin-right: 120px;
+  background: rgb(118, 178, 202);
 }
